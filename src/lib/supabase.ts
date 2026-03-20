@@ -1,15 +1,22 @@
 import { createClient } from "@supabase/supabase-js";
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
+// Lazy client — safe when env vars aren't set at build time
+let _supabase: ReturnType<typeof createClient> | null = null;
 
-// Client-side Supabase client (uses anon key)
-export const supabase = createClient(supabaseUrl, supabaseAnonKey);
+export function getSupabaseClient() {
+  if (!_supabase) {
+    const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+    const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
+    if (!url || !key) throw new Error("Supabase env vars not set");
+    _supabase = createClient(url, key);
+  }
+  return _supabase;
+}
 
-// Server-side Supabase client (uses service role key — only used in API routes)
+// Server-side client — only used in API routes, never at build time
 export function createServerSupabase() {
-  return createClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.SUPABASE_SERVICE_ROLE_KEY!
-  );
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
+  const key = process.env.SUPABASE_SERVICE_ROLE_KEY;
+  if (!url || !key) throw new Error("Supabase server env vars not set");
+  return createClient(url, key);
 }
