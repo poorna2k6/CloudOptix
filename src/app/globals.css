@@ -1,0 +1,104 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* CloudOptix Brand Colors */
+  --color-navy: #0A0F1E;
+  --color-navy-light: #0D1530;
+  --color-surface: #111827;
+  --color-surface-raised: #1F2937;
+  --color-cyan: #06B6D4;
+  --color-cyan-light: #22D3EE;
+  --color-blue: #3B82F6;
+  --color-blue-dark: #1D4ED8;
+  --color-violet: #7C3AED;
+  --color-teal: #14B8A6;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-border-strong: rgba(6, 182, 212, 0.3);
+
+  --color-background: #0A0F1E;
+  --color-foreground: #F8FAFC;
+
+  --font-sans: var(--font-geist-sans), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), monospace;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #0A0F1E;
+  color: #F8FAFC;
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: #0A0F1E; }
+::-webkit-scrollbar-thumb { background: #1F2937; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #374151; }
+
+/* Selection */
+::selection {
+  background: rgba(6, 182, 212, 0.25);
+  color: #F8FAFC;
+}
+
+/* Gradient text */
+.gradient-text {
+  background: linear-gradient(135deg, #06B6D4, #3B82F6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gradient-text-wide {
+  background: linear-gradient(135deg, #22D3EE 0%, #3B82F6 50%, #818CF8 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Grid background */
+.grid-pattern {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+/* Animated gradient border */
+.gradient-border {
+  position: relative;
+  background:
+    linear-gradient(#111827, #111827) padding-box,
+    linear-gradient(135deg, rgba(6, 182, 212, 0.4), rgba(59, 130, 246, 0.4)) border-box;
+  border: 1px solid transparent;
+}
+
+/* Glow */
+.glow-cyan { box-shadow: 0 0 30px rgba(6, 182, 212, 0.15); }
+.glow-blue { box-shadow: 0 0 30px rgba(59, 130, 246, 0.15); }
+
+/* Focus */
+*:focus-visible {
+  outline: 2px solid #06B6D4;
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+a, button { transition: all 0.2s ease; }
+
+/* Section spacing helper */
+.section-y {
+  padding-top: 5rem;
+  padding-bottom: 5rem;
+}
+@media (min-width: 768px) {
+  .section-y {
+    padding-top: 7rem;
+    padding-bottom: 7rem;
+  }
+}
