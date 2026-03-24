@@ -2,10 +2,6 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { Header } from "@/components/layout/header";
-import { Footer } from "@/components/layout/footer";
-import { createServerSupabase } from "@/lib/supabase";
-import type { UserProfile } from "@/types";
 
 export const metadata: Metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://cloudoptix.com"),
@@ -66,37 +62,18 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  // Fetch session on every public page render so the header shows the right CTA
-  let headerUser = null;
-  try {
-    const supabase = await createServerSupabase();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data: profile } = await supabase
-        .from("user_profiles")
-        .select("email, full_name, avatar_url")
-        .eq("id", user.id)
-        .single<Pick<UserProfile, "email" | "full_name" | "avatar_url">>();
-      if (profile) headerUser = profile;
-    }
-  } catch {
-    // Not configured yet (missing env vars) — header falls back to "Get Started"
-  }
-
+// Root layout — html/body/fonts only.
+// Header + Footer live in (public)/layout.tsx.
+// Auth pages get (auth)/layout.tsx (centered card, no nav).
+// Dashboard/Admin get their own sidebar layouts.
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html
       lang="en"
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0A0F1E] text-slate-100">
-        <Header user={headerUser} />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        {children}
       </body>
     </html>
   );
