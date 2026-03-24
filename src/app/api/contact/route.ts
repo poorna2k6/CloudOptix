@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { z } from "zod";
-import { createServerSupabase } from "@/lib/supabase";
+import { createAdminSupabase } from "@/lib/supabase";
 
 const contactSchema = z.object({
   name: z.string().min(2),
@@ -17,7 +17,7 @@ export async function POST(req: NextRequest) {
     const data = contactSchema.parse(body);
 
     // 1. Persist lead to Supabase
-    const supabase = createServerSupabase();
+    const supabase = createAdminSupabase();
     const { error: dbError } = await supabase.from("contact_leads").insert([
       {
         name: data.name,
