@@ -14,7 +14,7 @@ export default async function ProfilePage() {
     .from("user_profiles")
     .select("*")
     .eq("id", user.id)
-    .single<UserProfile>();
+    .single() as { data: UserProfile | null };
 
   return (
     <div className="max-w-lg">

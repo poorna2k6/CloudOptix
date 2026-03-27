@@ -9,7 +9,7 @@ export default async function DashboardPage() {
   const { data: { user } } = await supabase.auth.getUser();
 
   const [{ data: profile }, { count: leadsCount }, { count: newLeadsCount }] = await Promise.all([
-    supabase.from("user_profiles").select("*").eq("id", user!.id).single<UserProfile>(),
+    supabase.from("user_profiles").select("*").eq("id", user!.id).single() as Promise<{ data: UserProfile | null }>,
     supabase.from("contact_leads").select("*", { count: "exact", head: true }),
     supabase.from("contact_leads").select("*", { count: "exact", head: true }).eq("status", "new"),
   ]);
