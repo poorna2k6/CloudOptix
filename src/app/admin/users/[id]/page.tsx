@@ -19,7 +19,7 @@ export default async function UserDetailPage({
     .from("user_profiles")
     .select("*")
     .eq("id", id)
-    .single<UserProfile>();
+    .single() as { data: UserProfile | null; error: any };
 
   if (error || !u) notFound();
 

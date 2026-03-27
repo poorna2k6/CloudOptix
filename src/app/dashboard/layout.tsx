@@ -14,7 +14,7 @@ export default async function DashboardLayout({ children }: { children: React.Re
     .from("user_profiles")
     .select("*")
     .eq("id", user.id)
-    .single<UserProfile>();
+    .single() as { data: UserProfile | null };
 
   return (
     <div className="flex h-screen bg-[#0A0F1E] overflow-hidden">
