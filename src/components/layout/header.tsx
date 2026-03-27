@@ -3,8 +3,9 @@
 import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { Menu, X, Cloud, ChevronDown, LayoutDashboard, LogOut } from "lucide-react";
+import { Menu, X, ChevronDown, LayoutDashboard, LogOut } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { QorvariLogo } from "@/components/brand/qorvari-logo";
 import { cn } from "@/lib/utils";
 import { NAV_ITEMS } from "@/lib/constants";
 import { signOut } from "@/lib/actions/auth";
@@ -45,14 +46,8 @@ export function Header({ user }: { user?: HeaderUser | null }) {
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex h-16 items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 group">
-            <div className="relative flex h-8 w-8 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 shadow-md shadow-cyan-500/30 group-hover:shadow-cyan-500/50 transition-all duration-300">
-              <Cloud className="h-4.5 w-4.5 text-white" strokeWidth={2.5} />
-            </div>
-            <span className="text-lg font-bold tracking-tight">
-              <span className="gradient-text">Cloud</span>
-              <span className="text-white">Optix</span>
-            </span>
+          <Link href="/" className="group">
+            <QorvariLogo size="md" className="transition-transform group-hover:scale-105" />
           </Link>
 
           {/* Desktop Nav */}

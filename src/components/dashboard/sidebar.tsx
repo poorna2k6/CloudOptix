@@ -3,8 +3,9 @@
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import {
-  Cloud, LayoutDashboard, Users, MessageSquare, User, LogOut, ShieldCheck,
+  LayoutDashboard, Users, MessageSquare, User, LogOut, ShieldCheck,
 } from "lucide-react";
+import { QorvariLogo } from "@/components/brand/qorvari-logo";
 import { cn } from "@/lib/utils";
 import { signOut } from "@/lib/actions/auth";
 import type { UserProfile } from "@/types";
@@ -31,14 +32,8 @@ export function Sidebar({ profile }: SidebarProps) {
     <aside className="w-60 shrink-0 flex flex-col h-full bg-[#070C18] border-r border-white/8">
       {/* Logo */}
       <div className="px-5 py-5 border-b border-white/8">
-        <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 flex items-center justify-center shadow-lg shadow-cyan-500/20">
-            <Cloud className="w-4 h-4 text-white" />
-          </div>
-          <span className="text-lg font-bold tracking-tight">
-            <span className="gradient-text">Cloud</span>
-            <span className="text-white">Optix</span>
-          </span>
+        <Link href="/">
+          <QorvariLogo size="md" />
         </Link>
       </div>
 

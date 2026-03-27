@@ -1,6 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { Cloud, Linkedin, Twitter, Github, Mail, Phone, MapPin } from "lucide-react";
+import { Linkedin, Twitter, Github, Mail, MapPin } from "lucide-react";
+import { QorvariLogo } from "@/components/brand/qorvari-logo";
+import { BRAND, BRAND_MESSAGING } from "@/lib/brand";
 
 const FOOTER_LINKS = {
   Services: [
@@ -31,33 +33,27 @@ export function Footer() {
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2 lg:grid-cols-5">
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="flex items-center gap-2.5 group w-fit">
-              <div className="flex h-9 w-9 items-center justify-center rounded-lg bg-gradient-to-br from-cyan-500 to-blue-600 shadow-md shadow-cyan-500/30">
-                <Cloud className="h-5 w-5 text-white" strokeWidth={2.5} />
-              </div>
-              <span className="text-xl font-bold">
-                <span className="gradient-text">Cloud</span>
-                <span className="text-white">Optix</span>
-              </span>
+            <Link href="/" className="w-fit block">
+              <QorvariLogo size="lg" />
             </Link>
 
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Empowering cloud transformation with intelligence and precision. Your trusted partner for Discovery, Migration, Modernization, and Optimization.
+              {BRAND.description}
             </p>
 
             <p className="text-xs font-semibold text-cyan-400 italic">
-              &ldquo;Clarity Before Cloud. Value After.&rdquo;
+              &ldquo;{BRAND.tagline}&rdquo;
             </p>
 
             {/* Contact info */}
             <div className="space-y-2 text-sm text-slate-400">
-              <a href="mailto:hello@cloudoptix.com" className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
+              <a href={`mailto:${BRAND.contact.email}`} className="flex items-center gap-2 hover:text-cyan-400 transition-colors">
                 <Mail className="h-4 w-4 flex-shrink-0" />
-                hello@cloudoptix.com
+                {BRAND.contact.email}
               </a>
               <div className="flex items-center gap-2">
                 <MapPin className="h-4 w-4 flex-shrink-0" />
-                United States
+                {BRAND.company.location}
               </div>
             </div>
 
@@ -105,7 +101,7 @@ export function Footer() {
       <div className="border-t border-white/5">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-5 flex flex-col sm:flex-row items-center justify-between gap-3">
           <p className="text-xs text-slate-500">
-            &copy; {new Date().getFullYear()} CloudOptix. All rights reserved.
+            &copy; {new Date().getFullYear()} {BRAND.company.legalName}. All rights reserved.
           </p>
           <div className="flex items-center gap-4 text-xs text-slate-500">
             <Link href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</Link>

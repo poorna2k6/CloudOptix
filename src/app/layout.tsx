@@ -1,52 +1,40 @@
 import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { ErrorBoundary } from "@/components/error-boundary";
+import { BRAND } from "@/lib/brand";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? "https://cloudoptix.com"),
+  metadataBase: new URL(process.env.NEXT_PUBLIC_APP_URL ?? BRAND.urls.website),
   title: {
-    default: "CloudOptix — Clarity Before Cloud. Value After.",
-    template: "%s | CloudOptix",
+    default: BRAND.seo.title,
+    template: BRAND.seo.titleTemplate,
   },
-  description:
-    "CloudOptix is your trusted partner for Cloud Discovery, Migration, Modernization, and Optimization — delivering data-driven insights and automated execution for enterprise cloud transformation.",
-  keywords: [
-    "cloud transformation",
-    "cloud migration",
-    "cloud optimization",
-    "FinOps",
-    "application modernization",
-    "cloud assessment",
-    "AWS",
-    "Azure",
-    "Google Cloud",
-    "cloud consulting",
-  ],
-  authors: [{ name: "CloudOptix" }],
-  creator: "CloudOptix",
+  description: BRAND.seo.description,
+  keywords: [...BRAND.seo.keywords],
+  authors: [{ name: BRAND.name }],
+  creator: BRAND.name,
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://cloudoptix.com",
-    siteName: "CloudOptix",
-    title: "CloudOptix — Clarity Before Cloud. Value After.",
-    description:
-      "Trusted partner for cloud discovery, migration, modernization, and optimization. Intelligence-led, automation-first cloud transformation.",
+    url: BRAND.urls.website,
+    siteName: BRAND.name,
+    title: BRAND.seo.title,
+    description: BRAND.seo.description,
     images: [
       {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "CloudOptix — Cloud Transformation Platform",
+        alt: `${BRAND.name} — Enterprise Cloud Transformation Platform`,
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "CloudOptix — Clarity Before Cloud. Value After.",
-    description:
-      "Intelligence-led cloud transformation: discovery, migration, modernization & optimization.",
+    title: BRAND.seo.title,
+    description: BRAND.seo.description,
     images: ["/og-image.png"],
   },
   robots: {
@@ -73,7 +61,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
       className={`${GeistSans.variable} ${GeistMono.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col bg-[#0A0F1E] text-slate-100">
-        {children}
+        <ErrorBoundary>
+          {children}
+        </ErrorBoundary>
       </body>
     </html>
   );
