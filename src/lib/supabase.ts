@@ -6,7 +6,16 @@ import { cookies } from "next/headers";
 export function createBrowserSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error("Missing Supabase public env vars");
+  
+  // During build time, return a mock client if env vars are missing
+  if (!url || !key) {
+    if (typeof window === 'undefined') {
+      // Server-side during build - return mock
+      return null as any;
+    }
+    throw new Error("Missing Supabase public env vars");
+  }
+  
   return createBrowserClient(url, key);
 }
 
@@ -15,7 +24,15 @@ export function createBrowserSupabase() {
 export async function createServerSupabase() {
   const url = process.env.NEXT_PUBLIC_SUPABASE_URL;
   const key = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-  if (!url || !key) throw new Error("Missing Supabase public env vars");
+  
+  // During build time, return a mock client if env vars are missing
+  if (!url || !key) {
+    if (process.env.NODE_ENV === 'production' && !process.env.VERCEL) {
+      // Build time without env vars - return mock
+      return null as any;
+    }
+    throw new Error("Missing Supabase public env vars");
+  }
 
   // cookies() is async in Next.js 16
   const cookieStore = await cookies();
