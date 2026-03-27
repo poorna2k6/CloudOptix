@@ -11,8 +11,7 @@ export default async function UsersPage() {
   const { data: users, error } = await supabase
     .from("user_profiles")
     .select("*")
-    .order("created_at", { ascending: false })
-    .returns<UserProfile[]>();
+    .order("created_at", { ascending: false }) as { data: UserProfile[] | null; error: any };
 
   if (error) {
     return <p className="text-red-400 text-sm">Failed to load users: {error.message}</p>;
