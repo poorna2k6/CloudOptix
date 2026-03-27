@@ -26,7 +26,7 @@ export default function LoginPage() {
     <>
       <div className="mb-7">
         <h1 className="text-2xl font-bold text-white mb-1">Welcome back</h1>
-        <p className="text-sm text-slate-400">Sign in to your CloudOptix account</p>
+        <p className="text-sm text-slate-400">Sign in to your Qorvari account</p>
       </div>
 
       {/* Google OAuth */}

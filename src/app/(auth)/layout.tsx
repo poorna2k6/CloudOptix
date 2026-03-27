@@ -15,8 +15,8 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
           <Cloud className="w-5 h-5 text-white" />
         </div>
         <span className="text-xl font-bold tracking-tight">
-          <span className="gradient-text">Cloud</span>
-          <span className="text-white">Optix</span>
+          <span className="gradient-text">Qor</span>
+          <span className="text-white">vari</span>
         </span>
       </Link>
 
@@ -26,7 +26,7 @@ export default function AuthLayout({ children }: { children: React.ReactNode }) 
       </div>
 
       <p className="mt-6 text-xs text-slate-600 text-center">
-        © {new Date().getFullYear()} CloudOptix · All rights reserved
+        © {new Date().getFullYear()} Qorvari · All rights reserved
       </p>
     </div>
   );

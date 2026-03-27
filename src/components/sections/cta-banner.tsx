@@ -24,7 +24,7 @@ export function CtaBanner() {
               <span className="gradient-text">With Confidence</span>
             </h2>
             <p className="text-slate-400 text-lg max-w-xl mx-auto mb-10 leading-relaxed">
-              Get a free cloud readiness assessment and discover how CloudOptix can accelerate your transformation — with zero risk.
+              Get a free cloud readiness assessment and discover how Qorvari can accelerate your transformation — with zero risk.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

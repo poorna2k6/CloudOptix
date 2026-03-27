@@ -30,7 +30,7 @@ export default async function DashboardPage() {
         <h1 className="text-2xl font-bold text-white mb-1">
           Good morning, {firstName} 👋
         </h1>
-        <p className="text-slate-400 text-sm">Here&apos;s what&apos;s happening with CloudOptix today.</p>
+        <p className="text-slate-400 text-sm">Here&apos;s what&apos;s happening with Qorvari today.</p>
       </div>
 
       {/* Stats */}

@@ -103,7 +103,7 @@ export function Hero() {
                   <div className="h-3 w-3 rounded-full bg-green-500/60" />
                 </div>
                 <div className="mx-auto text-xs text-slate-500 font-mono">
-                  CloudOptix — Cloud Transformation Dashboard
+                  Qorvari — Cloud Transformation Dashboard
                 </div>
               </div>
 

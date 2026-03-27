@@ -6,15 +6,15 @@ import { Badge } from "@/components/ui/badge";
 export const metadata: Metadata = {
   title: "Contact Us",
   description:
-    "Get in touch with the CloudOptix team. Start your free cloud assessment, schedule a discovery call, or ask us anything about your cloud transformation journey.",
+    "Get in touch with the Qorvari team. Start your free cloud assessment, schedule a discovery call, or ask us anything about your cloud transformation journey.",
 };
 
 const CONTACT_INFO = [
   {
     icon: Mail,
     label: "Email",
-    value: "hello@cloudoptix.com",
-    href: "mailto:hello@cloudoptix.com",
+    value: "hello@qorvari.com",
+    href: "mailto:hello@qorvari.com",
   },
   {
     icon: Clock,

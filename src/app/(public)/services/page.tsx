@@ -6,7 +6,7 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 export const metadata: Metadata = {
   title: "Services",
   description:
-    "Explore CloudOptix cloud transformation services: Discovery & Assessment, Cloud Migration, Application Modernization, and Cloud Optimization & FinOps.",
+    "Explore Qorvari cloud transformation services: Discovery & Assessment, Cloud Migration, Application Modernization, and Cloud Optimization & FinOps.",
 };
 
 export default function ServicesPage() {

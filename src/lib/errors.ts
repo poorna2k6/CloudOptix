@@ -1,5 +1,5 @@
 /**
- * Custom error classes for CloudOptix application
+ * Custom error classes for Qorvari application
  * Provides structured error handling with proper HTTP status codes
  */
 

@@ -18,7 +18,7 @@ export default function RegisterPage() {
     <>
       <div className="mb-7">
         <h1 className="text-2xl font-bold text-white mb-1">Create your account</h1>
-        <p className="text-sm text-slate-400">Get started with CloudOptix — no credit card required</p>
+        <p className="text-sm text-slate-400">Get started with Qorvari — no credit card required</p>
       </div>
 
       <form action={formAction} className="space-y-5">

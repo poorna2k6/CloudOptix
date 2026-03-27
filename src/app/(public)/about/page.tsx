@@ -11,7 +11,7 @@ import { CtaBanner } from "@/components/sections/cta-banner";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "Learn about CloudOptix — our vision, mission, core values, and the philosophy behind our cloud-agnostic, automation-first approach to cloud transformation.",
+    "Learn about Qorvari — our vision, mission, core values, and the philosophy behind our cloud-agnostic, automation-first approach to cloud transformation.",
 };
 
 const CORE_VALUES = [
@@ -69,7 +69,7 @@ export default function AboutPage() {
         <div className="relative mx-auto max-w-3xl px-4">
           <Badge variant="blue" className="mb-4">Our Story</Badge>
           <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-white mb-6">
-            About <span className="gradient-text">CloudOptix</span>
+            About <span className="gradient-text">Qorvari</span>
           </h1>
           <p className="text-lg text-slate-400 leading-relaxed">
             We started with a simple belief: organizations deserve clarity before they move to the cloud and measurable value after they arrive.
@@ -115,7 +115,7 @@ export default function AboutPage() {
               <div className="h-10 w-10 rounded-full bg-gradient-to-br from-cyan-500 to-blue-600" />
               <div className="text-left">
                 <p className="text-sm font-semibold text-white">Founder &amp; CEO</p>
-                <p className="text-xs text-slate-500">CloudOptix</p>
+                <p className="text-xs text-slate-500">Qorvari</p>
               </div>
             </div>
           </div>
