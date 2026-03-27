@@ -4,6 +4,7 @@ import { Badge } from "@/components/ui/badge";
 import { UserRoleForm } from "./user-role-form";
 import type { UserProfile } from "@/types";
 
+export const dynamic = 'force-dynamic';
 export const metadata = { title: "User Detail | Admin" };
 
 export default async function UserDetailPage({

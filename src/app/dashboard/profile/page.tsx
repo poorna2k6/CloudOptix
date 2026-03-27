@@ -3,6 +3,7 @@ import { createServerSupabase } from "@/lib/supabase";
 import { ProfileForm } from "./profile-form";
 import type { UserProfile } from "@/types";
 
+export const dynamic = 'force-dynamic';
 export const metadata = { title: "My Profile | Dashboard" };
 
 export default async function ProfilePage() {

@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { MessageSquare } from "lucide-react";
 import type { ContactLead } from "@/types";
 
+export const dynamic = 'force-dynamic';
 export const metadata = { title: "Leads | Dashboard" };
 
 const STATUS_STYLES: Record<string, "cyan" | "blue" | "violet" | "teal" | "outline"> = {

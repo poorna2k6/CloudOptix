@@ -2,6 +2,7 @@ import { createServerSupabase } from "@/lib/supabase";
 import { Users, MessageSquare, TrendingUp, Clock } from "lucide-react";
 import type { UserProfile } from "@/types";
 
+export const dynamic = 'force-dynamic';
 export const metadata = { title: "Dashboard" };
 
 export default async function DashboardPage() {
