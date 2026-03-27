@@ -1,6 +1,7 @@
 import { createServerSupabase } from "@/lib/supabase";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare } from "lucide-react";
+import type { ContactLead } from "@/types";
 
 export const metadata = { title: "Leads | Dashboard" };
 
@@ -16,7 +17,7 @@ export default async function LeadsPage() {
   const { data: leads, error } = await supabase
     .from("contact_leads")
     .select("*")
-    .order("created_at", { ascending: false });
+    .order("created_at", { ascending: false }) as { data: ContactLead[] | null; error: any };
 
   if (error) {
     return <p className="text-red-400 text-sm">Failed to load leads: {error.message}</p>;

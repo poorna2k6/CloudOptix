@@ -7,6 +7,18 @@ export interface ContactFormData {
   message: string;
 }
 
+export interface ContactLead {
+  id: string;
+  name: string;
+  email: string;
+  company: string;
+  phone: string | null;
+  service: string;
+  message: string;
+  status: string;
+  created_at: string;
+}
+
 export interface NavItem {
   label: string;
   href: string;
