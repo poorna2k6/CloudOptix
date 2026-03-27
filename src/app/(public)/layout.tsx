@@ -8,14 +8,17 @@ export default async function PublicLayout({ children }: { children: React.React
   let headerUser = null;
   try {
     const supabase = await createServerSupabase();
-    const { data: { user } } = await supabase.auth.getUser();
-    if (user) {
-      const { data: profile } = await supabase
-        .from("user_profiles")
-        .select("email, full_name, avatar_url")
-        .eq("id", user.id)
-        .single<Pick<UserProfile, "email" | "full_name" | "avatar_url">>();
-      if (profile) headerUser = profile;
+    // Skip if supabase client is null (during build without env vars)
+    if (supabase) {
+      const { data: { user } } = await supabase.auth.getUser();
+      if (user) {
+        const { data: profile } = await supabase
+          .from("user_profiles")
+          .select("email, full_name, avatar_url")
+          .eq("id", user.id)
+          .single();
+        if (profile) headerUser = profile as Pick<UserProfile, "email" | "full_name" | "avatar_url">;
+      }
     }
   } catch {
     // Missing env vars during build — header falls back to "Get Started"
