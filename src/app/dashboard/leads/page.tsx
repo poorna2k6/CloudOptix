@@ -1,4 +1,4 @@
-import { createServerSupabase } from "@/lib/supabase";
+import { createAdminSupabase } from "@/lib/supabase";
 import { Badge } from "@/components/ui/badge";
 import { MessageSquare } from "lucide-react";
 
@@ -12,7 +12,7 @@ const STATUS_STYLES: Record<string, "cyan" | "blue" | "violet" | "teal" | "outli
 };
 
 export default async function LeadsPage() {
-  const supabase = await createServerSupabase();
+  const supabase = createAdminSupabase();
   const { data: leads, error } = await supabase
     .from("contact_leads")
     .select("*")

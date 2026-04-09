@@ -16,6 +16,8 @@ export default async function DashboardLayout({ children }: { children: React.Re
     .eq("id", user.id)
     .single<UserProfile>();
 
+  if (profile && !profile.is_active) redirect("/login?reason=disabled");
+
   return (
     <div className="flex h-screen bg-[#0A0F1E] overflow-hidden">
       <Sidebar profile={profile} />

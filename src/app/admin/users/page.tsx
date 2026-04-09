@@ -1,4 +1,4 @@
-import { createServerSupabase } from "@/lib/supabase";
+import { createAdminSupabase } from "@/lib/supabase";
 import { Badge } from "@/components/ui/badge";
 import { Users } from "lucide-react";
 import Link from "next/link";
@@ -7,7 +7,7 @@ import type { UserProfile } from "@/types";
 export const metadata = { title: "User Management | Admin" };
 
 export default async function UsersPage() {
-  const supabase = await createServerSupabase();
+  const supabase = createAdminSupabase();
   const { data: users, error } = await supabase
     .from("user_profiles")
     .select("*")

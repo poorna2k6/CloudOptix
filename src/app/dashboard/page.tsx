@@ -1,4 +1,4 @@
-import { createServerSupabase } from "@/lib/supabase";
+import { createServerSupabase, createAdminSupabase } from "@/lib/supabase";
 import { Users, MessageSquare, TrendingUp, Clock } from "lucide-react";
 import type { UserProfile } from "@/types";
 
@@ -8,10 +8,11 @@ export default async function DashboardPage() {
   const supabase = await createServerSupabase();
   const { data: { user } } = await supabase.auth.getUser();
 
+  const admin = createAdminSupabase();
   const [{ data: profile }, { count: leadsCount }, { count: newLeadsCount }] = await Promise.all([
     supabase.from("user_profiles").select("*").eq("id", user!.id).single<UserProfile>(),
-    supabase.from("contact_leads").select("*", { count: "exact", head: true }),
-    supabase.from("contact_leads").select("*", { count: "exact", head: true }).eq("status", "new"),
+    admin.from("contact_leads").select("*", { count: "exact", head: true }),
+    admin.from("contact_leads").select("*", { count: "exact", head: true }).eq("status", "new"),
   ]);
 
   const firstName = profile?.full_name?.split(" ")[0] ?? "there";

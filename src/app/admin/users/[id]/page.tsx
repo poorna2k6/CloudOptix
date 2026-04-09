@@ -1,5 +1,5 @@
 import { notFound, redirect } from "next/navigation";
-import { createServerSupabase } from "@/lib/supabase";
+import { createAdminSupabase } from "@/lib/supabase";
 import { Badge } from "@/components/ui/badge";
 import { UserRoleForm } from "./user-role-form";
 import type { UserProfile } from "@/types";
@@ -14,7 +14,7 @@ export default async function UserDetailPage({
   // params is a Promise in Next.js 16
   const { id } = await params;
 
-  const supabase = await createServerSupabase();
+  const supabase = createAdminSupabase();
   const { data: u, error } = await supabase
     .from("user_profiles")
     .select("*")
