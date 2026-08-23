@@ -22,20 +22,14 @@ export const metadata: Metadata = {
     siteName: BRAND.name,
     title: BRAND.seo.title,
     description: BRAND.seo.description,
-    images: [
-      {
-        url: "/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: `${BRAND.name} — Enterprise Cloud Transformation Platform`,
-      },
-    ],
+    // TODO: add /og-image.png to public/ and restore this
+    // images: [{ url: "/og-image.png", width: 1200, height: 630, alt: `${BRAND.name} — Enterprise Cloud Transformation Platform` }],
   },
   twitter: {
     card: "summary_large_image",
     title: BRAND.seo.title,
     description: BRAND.seo.description,
-    images: ["/og-image.png"],
+    // images: ["/og-image.png"], // TODO: add og-image.png to public/
   },
   robots: {
     index: true,

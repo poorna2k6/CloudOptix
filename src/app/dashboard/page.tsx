@@ -17,6 +17,13 @@ export default async function DashboardPage() {
 
   const firstName = profile?.full_name?.split(" ")[0] ?? "there";
 
+  // Static class maps are required — Tailwind v4's scanner cannot detect interpolated class names
+  const colorClasses: Record<string, { wrapper: string; icon: string }> = {
+    cyan:   { wrapper: "bg-cyan-500/10 border-cyan-500/20",   icon: "text-cyan-400" },
+    blue:   { wrapper: "bg-blue-500/10 border-blue-500/20",   icon: "text-blue-400" },
+    violet: { wrapper: "bg-violet-500/10 border-violet-500/20", icon: "text-violet-400" },
+  };
+
   const stats = [
     { label: "Total Leads", value: leadsCount ?? 0, icon: MessageSquare, color: "cyan" },
     { label: "New Leads", value: newLeadsCount ?? 0, icon: TrendingUp, color: "blue" },
@@ -40,8 +47,8 @@ export default async function DashboardPage() {
             key={label}
             className="bg-white/[0.03] border border-white/8 rounded-xl p-5 flex items-center gap-4"
           >
-            <div className={`w-10 h-10 rounded-lg flex items-center justify-center bg-${color}-500/10 border border-${color}-500/20`}>
-              <Icon className={`w-5 h-5 text-${color}-400`} />
+            <div className={`w-10 h-10 rounded-lg flex items-center justify-center border ${colorClasses[color].wrapper}`}>
+              <Icon className={`w-5 h-5 ${colorClasses[color].icon}`} />
             </div>
             <div>
               <p className="text-2xl font-bold text-white">{value}</p>

@@ -4,10 +4,17 @@ import { Sidebar } from "@/components/dashboard/sidebar";
 import type { UserProfile } from "@/types";
 
 export default async function DashboardLayout({ children }: { children: React.ReactNode }) {
-  const supabase = await createServerSupabase();
+  // Wrap Supabase init in try-catch so missing env vars redirect cleanly instead of crashing the build
+  let supabase;
+  try {
+    supabase = await createServerSupabase();
+  } catch {
+    redirect("/login");
+  }
+
   const { data: { user } } = await supabase.auth.getUser();
 
-  // Proxy handles unauthenticated redirects, but double-check here for type safety
+  // Middleware handles unauthenticated redirects, but double-check here for type safety
   if (!user) redirect("/login");
 
   const { data: profile } = await supabase

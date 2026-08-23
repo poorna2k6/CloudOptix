@@ -4,9 +4,16 @@ import { Sidebar } from "@/components/dashboard/sidebar";
 import type { UserProfile } from "@/types";
 
 // Admin layout reuses the same sidebar but verifies admin role server-side too
-// (proxy.ts handles the first check; this is defence-in-depth)
+// (middleware.ts handles the first check; this is defence-in-depth)
 export default async function AdminLayout({ children }: { children: React.ReactNode }) {
-  const supabase = await createServerSupabase();
+  // Wrap Supabase init in try-catch so missing env vars redirect cleanly instead of crashing the build
+  let supabase;
+  try {
+    supabase = await createServerSupabase();
+  } catch {
+    redirect("/login");
+  }
+
   const { data: { user } } = await supabase.auth.getUser();
   if (!user) redirect("/login");
 
